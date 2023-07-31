@@ -180,7 +180,7 @@ def main():
             }
         }
         
-        save_path = 'temp/test_audio.wav'
+        save_path = 'test_audio.wav'
         with st.spinner("Waiting for the audio book"):
             ret = call_api_11lab(voice_settings, voice_id, save_path)
             if 'successful' in ret:
