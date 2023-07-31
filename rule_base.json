@@ -1,0 +1,104 @@
+[
+    {
+        "genere": ["Personal Development", "Self-Help"],
+        "favor_gender": ["female", "male"],
+        "favor_age": ["middle age", "young"],
+        "favor_accent": ["irish", "bristish", "american"], 
+        "settings": [
+            {
+                "voice_id": "pNInz6obpgDQGcFmaJgB",
+                "name": "Adam",
+                "labels": {
+                    "accent": "american",
+                    "description": "deep",
+                    "age": "middle aged",
+                    "gender": "male",
+                    "use case": "narration"
+                }
+            },
+            {
+                "voice_id": "TxGEqnHWrfWFTfGW9XjX",
+                "name": "Josh",
+                "labels": {
+                    "accent": "american",
+                    "description": "deep",
+                    "age": "young",
+                    "gender": "male",
+                    "use case": "narration"
+                }
+            },
+            {
+                "voice_id": "onwK4e9ZLuTAKqWW03F9",
+                "name": "Daniel",
+                "labels": {
+                    "accent": "british",
+                    "description": "deep",
+                    "age": "middle aged",
+                    "gender": "male",
+                    "use case": "news presenter"
+                }
+            },
+            {
+                "voice_id": "CYw3kZ02Hs0563khs1Fj",
+                "name": "Dave",
+                "labels": {
+                    "accent": "british-essex",
+                    "description": "conversational",
+                    "age": "young",
+                    "gender": "male",
+                    "use case": "video games"
+                }
+            }
+        ]
+    },
+    {
+        "genere": ["Young Adult", "Romance", "Coming-of-age"],
+        "favor_gender": ["female", "male"],
+        "favor_age": ["young", "middle age"],
+        "favor_accent": ["american", "bristish"],
+        "settings": [
+            {
+                "voice_id": "EXAVITQu4vr4xnSDxMaL",
+                "name": "Bella",
+                "labels": {
+                    "accent": "american",
+                    "description": "soft",
+                    "age": "young",
+                    "gender": "female",
+                    "use case": "narration"
+                }
+            },
+            {
+                "voice_id": "MF3mGyEYCl7XYWbV9V6O",
+                "name": "Elli",
+                "labels": {
+                    "accent": "american",
+                    "description": "emotional",
+                    "age": "young",
+                    "gender": "female",
+                    "use case": "narration"
+                }
+            }
+
+        ]
+    },
+    {
+        "genere": ["Autobiography", "Memoir"],
+        "favor_gender": ["female", "male"],
+        "favor_age": ["young", "middle age", "old"],
+        "favor_accent": ["american", "english-swedish"],
+        "settings": [
+            {
+                "voice_id": "Yko7PKHZNXotIFUBG7I9",
+                "name": "Matthew",
+                "labels": {
+                    "accent": "british",
+                    "age": "middle aged",
+                    "gender": "male",
+                    "use case": "audiobook",
+                    "description ": "calm"
+                }
+            }
+        ]
+    }
+]
