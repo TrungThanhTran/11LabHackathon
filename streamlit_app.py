@@ -77,29 +77,20 @@ def select_settings_by_rulebase(level_rule, data):
     # Level1: Rulebase
     if level_rule == 1:
         suggetor = RuleBase()
-        rem_voice = suggetor.pairse_rule(data)
+        data = suggetor.pairse_rule(data)
     # Level2: Semantic Similarity
     elif level_rule == 2:
-        rem_voice = {}
-        suggetor = SemanticCompare()
-        voice_ids = suggetor.get_all_voices_embedding()
-        book_info = [data[k] for k in data.keys() if k != 'file_path' and k != 'title']
-        ids, list_voices = suggetor.compare(suggetor.get_embedding(' '.join(book_info)), voice_ids)
-        num_voice_settings = len(list_voices)
-        index_voice_settings = random.randint(0, num_voice_settings - 1) 
-
-        for id in voice_ids.keys(): 
-            if id == list_voices[index_voice_settings]:
-                rem_voice["voice_id"] = list_voices[index_voice_settings]
-                rem_voice["metadata"] = voice_ids[id]["metadata"]
-                break
+        st.write(
+            "under construction"
+        )
     # Level3: Recommendation system
     elif level_rule == 3:
         st.write(
             "under construction"
         )
 
-    return rem_voice
+    return data
+
 
 def main():
     examples = [
@@ -146,7 +137,7 @@ def main():
     st.title('system input: ')
     st.write(input)
         
-    level_rule = 2
+    level_rule = 1
     button_generate = st.button("generate voice settings")
     if button_generate and input != None:
         rem_voice = select_settings_by_rulebase(level_rule, input)
@@ -171,7 +162,7 @@ def main():
             }
         }
         
-        save_path = 'test_audio.wav'
+        save_path = 'temp/test_audio.wav'
         with st.spinner("Waiting for the audio book"):
             ret = generate_speech_11lab(voice_settings, voice_id, save_path)
             if 'successful' in ret:

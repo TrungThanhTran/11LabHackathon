@@ -1,6 +1,10 @@
 import json
 import random
+import numpy as np
+from utils import get_voices
 import streamlit as st
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
 with open('voice_id.json') as f:
     VOICE_ID_DICT = json.load(f)
@@ -8,6 +12,7 @@ with open('voice_id.json') as f:
 with open('rule_base.json') as f:
     RULE_DICT = json.load(f)
 
+MODEL = SentenceTransformer('paraphrase-MiniLM-L12-v2')
 
 class RuleBase():
     def __init__(self) -> None:
@@ -44,6 +49,35 @@ class SemanticCompare():
     def __init__(self) -> None:
         pass
     
+    def get_embedding(self, sentence):
+        embedding = MODEL.encode(sentence)
+        return embedding
+    
+    def get_all_voices_embedding(self):
+        voice_ids = get_voices()
+        
+        for id in voice_ids.keys():
+            voice_ids[id]['embedding'] = self.get_embedding(voice_ids[id]['metadata'])
+        return voice_ids
+         
+    def compare(self, book_info, voices_id):
+        cose = {}
+        for key in voices_id.keys():
+            vector1 = voices_id[key]['embedding'].reshape(1, -1)
+            vector2 = book_info.reshape(1, -1)
+
+            # Calculate cosine similarity between the two vectors
+            similarity = cosine_similarity(vector1, vector2)
+
+            cose[key] = float(similarity) #cosine_similarity(voices_id[key]['embedding'], example1)
+        
+        sorted_dict_descending = sorted(cose.items(), key=lambda item: item[1], reverse=True)
+        ids = [voices_id[sorted_dict_descending[0][0]]['metadata'], 
+               voices_id[sorted_dict_descending[1][0]]['metadata'], 
+               voices_id[sorted_dict_descending[2][0]]['metadata']]
+        
+        return ids, [sorted_dict_descending[0][0], sorted_dict_descending[1][0], sorted_dict_descending[2][0]]
+
 class RecommandationSystem():
     def __init__(self) -> None:
         pass
